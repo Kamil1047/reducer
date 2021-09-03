@@ -1,5 +1,4 @@
-import React, { useReducer, useState } from "react";
-// import FormReducer from "./FormReducer";
+import React, { useReducer, useState, useEffect } from "react";
 
 const initialFormState = {
   username: "",
@@ -22,11 +21,13 @@ const FormReducer = (state, action) => {
 const Form = () => {
   const [formState, dispatch] = useReducer(FormReducer, initialFormState);
   const [display, setDisplay] = useState([]);
+  useEffect(() => {
+    display.length > 0 && alert(" Form Submitted Successfully!!");
+  }, [display]);
   const submitHandler = (e) => {
     e.preventDefault();
     setDisplay((prevData) => [...prevData, formState]);
-    // document.reducerForm.reset();
-    dispatch([]);
+    document.reducerForm.reset(formState.email);
   };
   const handleTextChange = (e) => {
     dispatch({
@@ -47,13 +48,12 @@ const Form = () => {
               name="username"
               value={formState.userName}
               onChange={(e) => handleTextChange(e)}
-              required
             />
           </div>
           <div>
             <label>Email: </label>
             <input
-              type="text"
+              type="email"
               name="email"
               value={formState.email}
               onChange={(e) => handleTextChange(e)}
@@ -62,7 +62,7 @@ const Form = () => {
           <div>
             <label>Password: </label>
             <input
-              type="text"
+              type="password"
               name="password"
               value={formState.password}
               onChange={(e) => handleTextChange(e)}
