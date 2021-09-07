@@ -14,22 +14,25 @@ const FormReducer = (state, action) => {
         [action.field]: action.payload,
       };
     default:
-      return state;
+      return { username: "", email: "", password: "" };
   }
 };
 
 const Form = () => {
   const [formState, dispatch] = useReducer(FormReducer, initialFormState);
   const [display, setDisplay] = useState([]);
+
   useEffect(() => {
     display.length > 0 && alert(" Form Submitted Successfully!!");
   }, [display]);
   const submitHandler = (e) => {
+    console.log(e);
     e.preventDefault();
     setDisplay((prevData) => [...prevData, formState]);
-    document.reducerForm.reset(formState.email);
+    document.myForm.reset();
   };
   const handleTextChange = (e) => {
+    
     dispatch({
       type: "Handle Input Text",
       field: e.target.name,
@@ -40,32 +43,35 @@ const Form = () => {
   return (
     <div>
       <div>
-        <form name="reducerForm" onSubmit={submitHandler}>
+        <form name="myForm" onInvalid={handleTextChange} onSubmit={submitHandler}>
           <div>
             <label>Username: </label>
             <input
+              
               type="text"
               name="username"
-              value={formState.userName}
               onChange={(e) => handleTextChange(e)}
+              required
             />
           </div>
           <div>
             <label>Email: </label>
             <input
+              
               type="email"
               name="email"
-              value={formState.email}
               onChange={(e) => handleTextChange(e)}
+              required
             />
           </div>
           <div>
             <label>Password: </label>
             <input
+              
               type="password"
               name="password"
-              value={formState.password}
               onChange={(e) => handleTextChange(e)}
+              required
             />
           </div>
           <button type="submit">Submit</button>

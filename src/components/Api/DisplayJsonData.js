@@ -2,9 +2,9 @@ import React from "react";
 export default function DisplayJsonData({ data }) {
   return (
     <div>
-      <p>UserID: {data.id}</p>
-      <p>Title: {data.title}</p>
-      <p>Completed: {data.completed.toString()}</p>
+      <h2>UserID: {data.id}</h2>
+      <h5>Title: {data.title}</h5>
+      <h5>Completed: {data.completed.toString()}</h5>
     </div>
   );
 }

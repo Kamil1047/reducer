@@ -15,13 +15,13 @@ const Jsonplaceholder = () => {
   };
 
   return (
-    <div>
+    <React.Fragment>
       {JsonData
-        ? JsonData.map((data, index) => (
+        ? JsonData.filter((data) => data.id <= 30).map((data, index) => (
             <Displayjsondata data={data} key={index} />
           ))
         : ""}
-    </div>
+    </React.Fragment> 
   );
 };
 

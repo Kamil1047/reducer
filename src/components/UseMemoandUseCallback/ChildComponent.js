@@ -1,16 +1,15 @@
-import React, { memo } from "react";
+import React, { Fragment, memo } from "react";
 
 const ChildComponent = ({ number, setNumber }) => {
   console.log("From child component");
 
-  //   const onClickHandler = () => setNumber(number + 1);
-
+  const onClickHandler = () => setNumber(number + 1);
   return (
-    <div>
+    <Fragment>
       <h1>Child component {number}</h1>
-      {/* <button onClick={onClickHandler}>Up</button> */}
-    </div>
+      <button onClick={onClickHandler}>Up</button>
+    </Fragment>
   );
 };
 
-export default ChildComponent;
+export default memo(ChildComponent);

@@ -4,6 +4,8 @@ import Employee from "./components/Context/Employee";
 import Form from "./components/Reducers/Form";
 import Jsonplaceholder from "./components/Api/JSONPlaceholder";
 import ParentComponent from "./components/UseMemoandUseCallback/ParentComponent";
+import Forwardref from "./components/ForwardRefs/ForwardRef";
+import LifeCycle from "./components/ClassBase/LifeCycle";
 
 export const EmployeeContext = React.createContext();
 
@@ -34,8 +36,19 @@ function App() {
       </div>
       <div>
         <br />
+        <h1>Forward Ref</h1>
+        <Forwardref />
+      </div>
+      <div>
+        <br />
         <h1>Fetch Data from API using UseEffect Hook</h1>
         <Jsonplaceholder />
+      </div>
+      <div>
+        <div style={{ backgroundColor: "black", color: "white" }}>
+          <h1>Class LifeCycle</h1>
+        </div>
+        <LifeCycle />
       </div>
     </div>
   );
